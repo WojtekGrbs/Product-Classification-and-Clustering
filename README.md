@@ -4,19 +4,23 @@ Unsupervised Learning project trying to aggregate the data into clusters of prod
 ##### [Data source](https://www.kaggle.com/datasets/lakritidis/product-classification-and-categorization)
 
 ## Preprocessing
-Included in `preprocessing.ipynb`, includes deleting the pre-made labels of products, homogenizing product names in terms of structure. It also includes `jacc_sim` and `lex_sim` functions that are the core of creating the model. The file also presents the process of data exploration and eventually wraps the entire preprocessing into `preprocess()` function that allows reconstruction of the entire procedure.
+Included in `Preprocessing.ipynb`, includes deleting the pre-made labels of products, homogenizing product names in terms of structure. It also includes `jacc_sim` and `lex_sim` functions that are the core of creating the model. The file also presents the process of data exploration and eventually wraps the entire preprocessing into `preprocess()` function that allows reconstruction of the entire procedure.
 ### Approach
 The number of clusters is determined independently of the pre-made labels - based off the silhuette charts involving `sklearn`'s `K-Medoids++` model. The metric used in both number of clusters and the eventual results was created by the authors - it is a linear combination of the Jaccard Similarity:
 $$\text{Jaccard Similarity} (A, B) = \frac{|A \cap B|}{|A \cup B|}$$
 and Damerau-Levenshtein Similarity:
-$$\text{Levenshtein distance}(s, t) = \begin{cases} 
+```math
+\text{DL}(s, t) = \begin{cases} 
 \max(|s|, |t|) & \text{if } \min(|s|, |t|) = 0 \\
-\min \begin{cases}
-\text{Levenshtein distance}(s[2:], t[2:]) + \text{substitution cost}(s[1], t[1]) \\
-\text{Levenshtein distance}(s[2:], t) + 1 \\
-\text{Levenshtein distance}(s, t[2:]) + 1
-\end{cases} & \text{otherwise}
-\end{cases}$$
+\min \left\{
+\begin{array}{l}
+\text{DL}(s[2:], t[2:]) + \text{substitution cost}(s[1], t[1]), \\
+\text{DL}(s[2:], t) + 1, \\
+\text{DL}(s, t[2:]) + 1
+\end{array}
+\right\} & \text{otherwise}
+\end{cases}
+```
 ## Model and results
 Both the implementation of our model and its results are presented in `Model.ipynb` file. 
 Final version of the model generated 10 clusters, the results of the division and its credibility is checked by creating a map of words for each of the cluster, presenting the most frequently occuring words as the biggest on the map. Examples of the clusters are as follows:
