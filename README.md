@@ -1,5 +1,5 @@
 # Product-Classification-and-Clustering
-Authors: [Wiktor Wierzchowski](https://github.com/wierzchw), [Wojciech Grabias](https://github.com/WojtekGrbs)
+Authors: [Wiktor Wierzchowski](https://github.com/wierzchw), [Wojciech Grabias](https://github.com/WojtekGrbs) <br>
 Unsupervised Learning project trying to aggregate the data into clusters of products of the same category (Mobile Phones, Freezers etc.) based on their name, registered in the database as strings.
 ##### [Data source](https://www.kaggle.com/datasets/lakritidis/product-classification-and-categorization)
 
